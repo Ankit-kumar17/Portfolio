@@ -103,7 +103,7 @@ const Projects = () => {
         {/* View More Button */}
         <div className="text-center mt-12">
           <a
-            href="https://github.com/"
+            href="https://github.com/Ankit-kumar17"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-glass-border hover:border-primary/50 hover:bg-secondary/50 transition-all font-medium"

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -6,18 +7,27 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ParticleBackground from "@/components/ParticleBackground";
+import Loader from "@/components/Loader";
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Services />
-      <Projects />
-      <Contact />
-      <Footer />
+      {isLoading && <Loader onLoadingComplete={() => setIsLoading(false)} />}
+      
+      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <ParticleBackground />
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Services />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 };

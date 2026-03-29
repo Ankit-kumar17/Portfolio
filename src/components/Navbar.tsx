@@ -38,13 +38,13 @@ const Navbar = () => {
         {/* Logo */}
         <a
           href="#home"
-          className="text-2xl font-bold gradient-text"
+          className="text-3xl ak-pattern-logo"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick("#home");
           }}
         >
-          AK
+          Ak
         </a>
 
         {/* Desktop Navigation */}
@@ -67,14 +67,12 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavClick("#contact");
-          }}
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
         >
-          Hire Me
+          View Resume
         </a>
 
         {/* Mobile Menu Toggle */}
@@ -107,14 +105,12 @@ const Navbar = () => {
             ))}
             <li className="px-4 pt-2">
               <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick("#contact");
-                }}
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium"
               >
-                Hire Me
+                View Resume
               </a>
             </li>
           </ul>

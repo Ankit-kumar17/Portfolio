@@ -13,14 +13,19 @@ const About = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image/Visual */}
+          {/* Left - Profile Image */}
           <div className="relative">
             <div className="aspect-square max-w-md mx-auto relative">
               {/* Decorative Elements */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 blur-2xl" />
-              <div className="relative glass-card rounded-2xl p-8 h-full flex flex-col justify-center items-center glow">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6">
-                  <span className="text-5xl font-bold text-primary-foreground">AK</span>
+              <div className="relative glass-card rounded-2xl p-6 h-full flex flex-col justify-center items-center glow overflow-hidden">
+                {/* Profile Image */}
+                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/30 mb-6 relative group">
+                  <img
+                    src="/profile.jpg"
+                    alt="Ankit Kumar"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Ankit Kumar</h3>
                 <p className="text-primary font-medium mb-4">Frontend Developer</p>
@@ -28,6 +33,10 @@ const About = () => {
                   <MapPin size={16} />
                   <span className="text-sm">India</span>
                 </div>
+                
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-28 h-28 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl" />
+                <div className="absolute bottom-0 right-0 w-28 h-28 border-b-2 border-r-2 border-accent/20 rounded-br-2xl" />
               </div>
             </div>
           </div>
@@ -42,7 +51,7 @@ const About = () => {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {/* Education Card */}
-              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-colors group">
+              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                   <GraduationCap className="text-primary" size={20} />
                 </div>
@@ -52,7 +61,7 @@ const About = () => {
               </div>
 
               {/* Experience Card */}
-              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-colors group">
+              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                   <Briefcase className="text-primary" size={20} />
                 </div>
@@ -62,7 +71,7 @@ const About = () => {
               </div>
 
               {/* Passion Card */}
-              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-colors group sm:col-span-2">
+              <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-all duration-300 group sm:col-span-2 hover:-translate-y-1">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                   <Heart className="text-primary" size={20} />
                 </div>

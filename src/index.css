@@ -132,6 +132,10 @@
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
 }
 
 @keyframes float {
@@ -157,4 +161,46 @@
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes draw-text {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-text {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: url(#ak-grad);
+  }
+}
+
+@keyframes caterpillar {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.ak-pattern-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary)) 10%,
+    hsl(var(--accent)) 10%,
+    hsl(var(--accent)) 20%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: -1px;
 }
