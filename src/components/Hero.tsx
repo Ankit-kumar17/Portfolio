@@ -87,10 +87,12 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-10 animate-slide-up opacity-0 stagger-4">
               <a
-                href="#projects"
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2 glow-sm"
               >
-                View My Work
+                Resume
                 <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
               <a
