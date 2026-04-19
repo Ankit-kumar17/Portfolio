@@ -1,4 +1,5 @@
 import { GraduationCap, MapPin, Briefcase, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
@@ -6,13 +7,33 @@ const About = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text">About Me</h2>
-          <p className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text"
+          >
+            About Me
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium"
+          >
             Get to Know Me
-          </p>
+          </motion.p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="max-w-4xl mx-auto space-y-8"
+        >
           {/* About Text */}
           <p className="text-lg text-muted-foreground leading-relaxed text-center">
             I am a passionate frontend developer specializing in React. I love building clean and 
@@ -48,7 +69,10 @@ const About = () => {
             </div>
 
             {/* Passion Card */}
-            <div className="glass-card p-5 rounded-xl hover:border-primary/50 transition-all duration-300 group sm:col-span-2 hover:-translate-y-1">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="glass-card p-5 rounded-xl border-primary/20 hover:border-primary/50 transition-colors duration-300 group sm:col-span-2"
+            >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                 <Heart className="text-primary" size={20} />
               </div>
@@ -57,9 +81,9 @@ const About = () => {
                 Creating responsive, accessible, and visually appealing web experiences. 
                 Turning ideas into reality with clean code and modern technologies.
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

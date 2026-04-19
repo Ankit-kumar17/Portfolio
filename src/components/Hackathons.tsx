@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Award, PlayCircle, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -62,6 +63,24 @@ const hackathons = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
 const Hackathons = () => {
   return (
     <section id="hackathons" className="section-padding relative bg-background/50">
@@ -72,18 +91,37 @@ const Hackathons = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2"
+          >
             Hackathon Achievements
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             Projects built under pressure, turning coffee into award-winning code.
-          </p>
+          </motion.p>
         </div>
 
         {/* Hackathons Grid (3 Columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
           {hackathons.map((hackathon) => (
-            <div
+            <motion.div
+              variants={itemVariants}
               key={hackathon.title}
               className="glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500 group"
             >
@@ -179,9 +217,9 @@ const Hackathons = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

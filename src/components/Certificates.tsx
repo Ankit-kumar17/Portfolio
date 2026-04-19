@@ -1,4 +1,5 @@
 import { Award, ExternalLink, Calendar, Building, PlayCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -32,6 +33,24 @@ const certificates = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
 const Certificates = () => {
   return (
     <section id="certificates" className="section-padding relative">
@@ -42,18 +61,37 @@ const Certificates = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2"
+          >
             Certifications
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             Continuous learning and validation of my professional skills.
-          </p>
+          </motion.p>
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {certificates.map((cert) => (
-            <div
+            <motion.div
+              variants={itemVariants}
               key={cert.title}
               className="group glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500"
             >
@@ -125,9 +163,9 @@ const Certificates = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { Code, Smartphone, Layout, Server, Layers } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -28,6 +29,23 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
 const Services = () => {
   return (
     <section id="services" className="section-padding relative">
@@ -37,19 +55,46 @@ const Services = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text">Services</h2>
-          <p className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text"
+          >
+            Services
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium"
+          >
             What I Can Do For You
-          </p>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             Comprehensive web development services tailored to your needs
-          </p>
+          </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {services.map((service, index) => (
-            <div
+            <motion.div
+              variants={itemVariants}
               key={service.title}
               className="group glass-card p-6 md:p-8 rounded-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
             >
@@ -77,9 +122,9 @@ const Services = () => {
                   {String(index + 1).padStart(2, '0')}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

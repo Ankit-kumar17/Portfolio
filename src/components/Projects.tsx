@@ -1,4 +1,5 @@
 import { ExternalLink, Github, ShoppingCart, CheckSquare, User, ArrowRight, Lightbulb, Target, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -50,6 +51,25 @@ const projects = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 const Projects = () => {
   return (
     <section id="projects" className="section-padding relative">
@@ -60,18 +80,37 @@ const Projects = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2"
+          >
             Featured Projects
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             A selection of projects that showcase my skills and passion for development
-          </p>
+          </motion.p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
           {projects.map((project) => (
-            <Dialog key={project.title}>
+            <motion.div key={project.title} variants={itemVariants}>
+              <Dialog>
               <DialogTrigger asChild>
                 <div className="group relative cursor-pointer h-full">
                   <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500">
@@ -203,9 +242,10 @@ const Projects = () => {
                   </div>
                 </div>
               </DialogContent>
-            </Dialog>
+              </Dialog>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View More Button */}
         <div className="text-center mt-12">

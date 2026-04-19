@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const skills = [
   {
     name: "HTML",
@@ -55,6 +57,25 @@ const skills = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="section-padding relative">
@@ -64,22 +85,49 @@ const Skills = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text">My Skills</h2>
-          <p className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text"
+          >
+            My Skills
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium"
+          >
             Technologies I Work With
-          </p>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             A curated collection of technologies and tools I use to bring ideas to life
-          </p>
+          </motion.p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-          {skills.map((skill, index) => (
-            <div
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
+        >
+          {skills.map((skill) => (
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
               key={skill.name}
-              className="group glass-card p-5 rounded-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group glass-card p-5 rounded-xl border-primary/10 hover:border-primary/50 transition-colors duration-300"
             >
               <div className="flex flex-col items-center text-center">
                 {/* Icon */}
@@ -107,9 +155,9 @@ const Skills = () => {
                   {skill.category}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

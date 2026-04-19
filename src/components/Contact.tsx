@@ -1,5 +1,6 @@
 import { Mail, Linkedin, Github, Twitter, Code2, Send, MapPin, Youtube, BookOpen } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const socialLinks = [
   {
@@ -90,18 +91,43 @@ const Contact = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary font-mono text-sm tracking-wider uppercase">Contact</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-mono text-sm tracking-wider uppercase"
+          >
+            Contact
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2"
+          >
             Let's Work Together
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted-foreground mt-4 max-w-xl mx-auto"
+          >
             Have a project in mind or want to discuss opportunities? Feel free to reach out!
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
             {/* Social Links (Connect With Me) */}
             <div className="glass-card p-6 rounded-xl">
               <h3 className="font-semibold mb-4">Connect With Me</h3>
@@ -149,10 +175,16 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form - Formspree */}
-          <div className="glass-card p-6 md:p-8 rounded-2xl glow">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass-card p-6 md:p-8 rounded-2xl glow"
+          >
             <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
 
             {submitStatus === "success" && (
@@ -234,7 +266,7 @@ const Contact = () => {
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
