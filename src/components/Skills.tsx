@@ -64,10 +64,10 @@ const Skills = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary font-mono text-sm tracking-wider uppercase">My Skills</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text">My Skills</h2>
+          <p className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium">
             Technologies I Work With
-          </h2>
+          </p>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
             A curated collection of technologies and tools I use to bring ideas to life
           </p>

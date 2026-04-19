@@ -1,4 +1,9 @@
-import { ExternalLink, Github, ShoppingCart, CheckSquare, User } from "lucide-react";
+import { ExternalLink, Github, ShoppingCart, CheckSquare, User, ArrowRight, Lightbulb, Target, Wrench } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const projects = [
   {
@@ -7,6 +12,13 @@ const projects = [
     icon: ShoppingCart,
     technologies: ["React", "Node.js", "MongoDB", "Express"],
     gradient: "from-primary to-cyan-400",
+    caseStudy: {
+      problem: "Local businesses lacked a unified, affordable platform to transition their sales online with customized inventory management.",
+      solution: "Developed a scalable full-stack application that provides an intuitive admin dashboard and a seamless shopping experience for customers.",
+      features: ["Real-time inventory sync", "Stripe payment integration", "JWT based Authentication"],
+      demoUrl: "https://demo.com",
+      githubUrl: "https://github.com",
+    }
   },
   {
     title: "Task Management System",
@@ -14,6 +26,13 @@ const projects = [
     icon: CheckSquare,
     technologies: ["React", "REST API", "CSS", "JavaScript"],
     gradient: "from-accent to-purple-400",
+    caseStudy: {
+      problem: "Teams struggled with context switching between heavy project management tools for simple daily tasks.",
+      solution: "Designed a lightweight, lightning-fast Kanban-style board focused entirely on daily micro-tasks to boost developer productivity.",
+      features: ["Drag and drop interfaces", "Optimistic UI rendering", "Detailed analytics dashboard"],
+      demoUrl: "https://demo.com",
+      githubUrl: "https://github.com",
+    }
   },
   {
     title: "Developer Portfolio Website",
@@ -21,6 +40,13 @@ const projects = [
     icon: User,
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
     gradient: "from-emerald-500 to-teal-400",
+    caseStudy: {
+      problem: "Standard text resumes failed to adequately display interactive frontend skills and design systems.",
+      solution: "Engineered a world-class, premium glassmorphic portfolio utilizing modern UI patterns to act as a living resume and interactive playground.",
+      features: ["Dark mode native", "Responsive Framer animations", "Serverless contact forms"],
+      demoUrl: "https://demo.com",
+      githubUrl: "https://github.com",
+    }
   },
 ];
 
@@ -34,7 +60,6 @@ const Projects = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary font-mono text-sm tracking-wider uppercase">Portfolio</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
             Featured Projects
           </h2>
@@ -46,57 +71,139 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group relative"
-            >
-              <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/50 transition-all duration-500">
-                {/* Project Header */}
-                <div className={`h-48 bg-gradient-to-br ${project.gradient} p-6 flex items-center justify-center relative overflow-hidden`}>
-                  {/* Pattern Overlay */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:20px_20px]" />
-                  </div>
-                  
-                  {/* Icon */}
-                  <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                    <project.icon className="w-10 h-10 text-white" />
-                  </div>
+            <Dialog key={project.title}>
+              <DialogTrigger asChild>
+                <div className="group relative cursor-pointer h-full">
+                  <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500">
+                    {/* Project Header */}
+                    <div className={`h-48 bg-gradient-to-br ${project.gradient} p-6 flex items-center justify-center relative overflow-hidden`}>
+                      {/* Pattern Overlay */}
+                      <div className="absolute inset-0 opacity-20">
+                        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:20px_20px]" />
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <project.icon className="w-10 h-10 text-white" />
+                      </div>
 
-                  {/* Hover Actions */}
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors" aria-label="View code">
-                      <Github className="w-5 h-5 text-white" />
-                    </button>
-                    <button className="p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors" aria-label="View live">
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </button>
+                      {/* Read More Overlay */}
+                      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="font-semibold text-lg flex items-center gap-2">
+                          Read Case Study <ArrowRight className="w-5 h-5" />
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
+                        {project.description}
+                      </p>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground border border-white/5"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </DialogTrigger>
+
+              {/* Enhanced Case Study Modal */}
+              <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto border-white/20 bg-background/95 backdrop-blur-xl p-0">
+                <div className={`p-8 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+                   {/* Pattern Overlay */}
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:20px_20px]" />
+                    </div>
+                  <div className="relative z-10 flex items-center gap-4">
+                    <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+                      <project.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold text-white mb-1">{project.title}</h2>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {project.technologies.map((tech) => (
+                          <span key={tech} className="text-xs px-2 py-1 bg-black/30 rounded text-white/90">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
-                    {project.description}
-                  </p>
+                <div className="p-8 space-y-8">
+                  <section>
+                    <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                      <Target className="w-5 h-5 text-red-400" />
+                      The Problem
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.caseStudy.problem}
+                    </p>
+                  </section>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <section>
+                    <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                      <Lightbulb className="w-5 h-5 text-yellow-400" />
+                      The Solution
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.caseStudy.solution}
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                      <Wrench className="w-5 h-5 text-blue-400" />
+                      Key Features
+                    </h3>
+                    <ul className="grid sm:grid-cols-2 gap-3">
+                      {project.caseStudy.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-muted-foreground bg-secondary/50 p-3 rounded-lg border border-white/5">
+                          <CheckSquare className="w-4 h-4 text-primary" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap gap-4 pt-6 border-t border-glass-border">
+                    <a
+                      href={project.caseStudy.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold shadow-lg"
+                    >
+                      <ExternalLink size={18} />
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.caseStudy.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 transition-all font-semibold"
+                    >
+                      <Github size={18} />
+                      Source Code
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
 

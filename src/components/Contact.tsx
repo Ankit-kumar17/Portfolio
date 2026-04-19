@@ -102,6 +102,25 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
+            {/* Social Links (Connect With Me) */}
+            <div className="glass-card p-6 rounded-xl">
+              <h3 className="font-semibold mb-4">Connect With Me</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-3 p-3 rounded-lg glass-card transition-all duration-300 group hover:-translate-y-0.5 ${link.color}`}
+                  >
+                    <link.icon size={20} className="text-muted-foreground group-hover:text-current transition-colors" />
+                    <span className="text-sm font-medium">{link.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
             {/* Info Cards */}
             <div className="glass-card p-6 rounded-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-start gap-4">
@@ -128,25 +147,6 @@ const Contact = () => {
                   <p className="text-muted-foreground text-sm">Based in India</p>
                   <p className="text-primary text-sm mt-2">Open to remote opportunities</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="glass-card p-6 rounded-xl">
-              <h3 className="font-semibold mb-4">Connect With Me</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-3 p-3 rounded-lg glass-card transition-all duration-300 group hover:-translate-y-0.5 ${link.color}`}
-                  >
-                    <link.icon size={20} className="text-muted-foreground group-hover:text-current transition-colors" />
-                    <span className="text-sm font-medium">{link.name}</span>
-                  </a>
-                ))}
               </div>
             </div>
           </div>

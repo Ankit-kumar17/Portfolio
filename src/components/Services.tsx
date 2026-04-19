@@ -37,10 +37,10 @@ const Services = () => {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-primary font-mono text-sm tracking-wider uppercase">Services</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text">Services</h2>
+          <p className="text-2xl sm:text-3xl text-foreground/80 mt-3 font-medium">
             What I Can Do For You
-          </h2>
+          </p>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
             Comprehensive web development services tailored to your needs
           </p>

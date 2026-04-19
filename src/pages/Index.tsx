@@ -5,6 +5,8 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
+import Hackathons from "@/components/Hackathons";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -25,6 +27,8 @@ const Index = () => {
         <Skills />
         <Services />
         <Projects />
+        <Hackathons />
+        <Certificates />
         <Contact />
         <Footer />
       </div>
