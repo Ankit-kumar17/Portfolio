@@ -1,4 +1,5 @@
-import { ArrowDown, Github, Linkedin, Twitter, Code2, Youtube, BookOpen } from "lucide-react";
+import { Github, Linkedin, Twitter, Code2, Youtube, BookOpen } from "lucide-react";
+import { TypewriterText } from "./ui/Typewriter";
 
 const socialLinks = [
   {
@@ -57,7 +58,7 @@ const Hero = () => {
 
       <div className="container-custom relative z-10 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left - Text Content */}
           <div className="text-left order-2 lg:order-1">
             {/* Badge */}
@@ -68,13 +69,13 @@ const Hero = () => {
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up opacity-0 stagger-1">
-              Hi, I'm{" "}
+              Hi, I am{" "}
               <span className="gradient-text">Ankit Kumar</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-4 animate-slide-up opacity-0 stagger-2">
-              Frontend Developer
+            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-4 animate-slide-up opacity-0 stagger-2 h-10">
+              <TypewriterText />
             </p>
 
             {/* Description */}
@@ -87,15 +88,16 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-10 animate-slide-up opacity-0 stagger-4">
               <a
-                href="#projects"
-                className="group px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center gap-2 glow-sm"
+                href="https://drive.google.com/file/d/1gEWFBOJEq74-wpXnj_saQ_JGjxxA5P3o/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-sm"
               >
-                View My Work
-                <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
+                Resume
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold hover:bg-secondary/50 transition-all"
+                className="px-8 py-3 rounded-lg border border-glass-border text-foreground font-semibold hover:bg-secondary/50 transition-all flex items-center justify-center gap-2"
               >
                 Get In Touch
               </a>
@@ -124,7 +126,7 @@ const Hero = () => {
             <div className="relative">
               {/* Glow behind photo */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-3xl scale-110" />
-              
+
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full group p-2">
                 {/* Caterpillar Animation Border */}
                 <svg className="absolute inset-0 w-full h-full animate-[spin_4s_linear_infinite]" viewBox="0 0 100 100">
@@ -167,7 +169,7 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              
+
               {/* Online indicator */}
               <div className="absolute bottom-6 right-6 w-6 h-6 rounded-full bg-emerald-500 border-4 border-background z-20 animate-pulse" />
 
@@ -195,3 +197,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
