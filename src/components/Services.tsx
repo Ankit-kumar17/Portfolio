@@ -1,5 +1,6 @@
 import { Code, Smartphone, Layout, Server, Layers } from "lucide-react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 
 const services = [
   {
@@ -96,32 +97,46 @@ const Services = () => {
             <motion.div
               variants={itemVariants}
               key={service.title}
-              className="group glass-card p-6 md:p-8 rounded-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
+              className="h-full"
             >
-              {/* Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-7 h-7 text-primary" />
+              <Tilt
+                glareEnable={true} 
+                glareMaxOpacity={0.15} 
+                glareColor="white" 
+                glarePosition="all" 
+                tiltMaxAngleX={5} 
+                tiltMaxAngleY={5} 
+                scale={1.02} 
+                transitionSpeed={2500} 
+                className="h-full"
+              >
+                <div className="group glass-card p-6 md:p-8 rounded-xl hover:border-primary/50 transition-all duration-300 relative overflow-hidden h-full">
+                  {/* Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-7 h-7 text-primary" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {/* Number */}
+                    <div className="absolute top-6 right-6 text-6xl font-bold text-secondary/50 select-none">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Number */}
-                <div className="absolute top-6 right-6 text-6xl font-bold text-secondary/50 select-none">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-              </div>
+              </Tilt>
             </motion.div>
           ))}
         </motion.div>
