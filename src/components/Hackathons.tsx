@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Award, PlayCircle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import {
   Dialog,
   DialogContent,
@@ -123,21 +124,33 @@ const Hackathons = () => {
             <motion.div
               variants={itemVariants}
               key={hackathon.title}
-              className="glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500 group"
+              className="h-full"
             >
-              {/* Top Video Emded */}
-              <div className="relative w-full aspect-video bg-black/20">
-                <iframe
-                  src={`https://www.youtube.com/embed/${hackathon.youtubeId}?rel=0`}
-                  title={`${hackathon.title} Demo Video`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full border-0"
-                />
-              </div>
+              <Tilt 
+                glareEnable={true} 
+                glareMaxOpacity={0.15} 
+                glareColor="white" 
+                glarePosition="all" 
+                tiltMaxAngleX={5} 
+                tiltMaxAngleY={5} 
+                scale={1.02} 
+                transitionSpeed={2500} 
+                className="h-full"
+              >
+                <div className="glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500 group h-full bg-glass/50 backdrop-blur-sm">
+                  {/* Top Video Emded */}
+                  <div className="relative w-full aspect-video bg-black/20">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${hackathon.youtubeId}?rel=0`}
+                      title={`${hackathon.title} Demo Video`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full border-0"
+                    />
+                  </div>
 
-              {/* Content body */}
-              <div className="p-6 flex-1 flex flex-col relative">
+                  {/* Content body */}
+                  <div className="p-6 flex-1 flex flex-col relative bg-glass/50 backdrop-blur-sm">
                 {/* Certificate Dialog Trigger (Icon Badge format) */}
                 <Dialog>
                   <DialogTrigger asChild>
@@ -217,7 +230,9 @@ const Hackathons = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </Tilt>
+        </motion.div>
           ))}
         </motion.div>
       </div>

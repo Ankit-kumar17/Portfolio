@@ -1,5 +1,6 @@
 import { Award, ExternalLink, Calendar, Building, PlayCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import {
   Dialog,
   DialogContent,
@@ -93,76 +94,90 @@ const Certificates = () => {
             <motion.div
               variants={itemVariants}
               key={cert.title}
-              className="group glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500"
+              className="h-full"
             >
-              {/* Image Header with Hover Action */}
-              <div className="relative h-48 overflow-hidden bg-white/5">
-                <img 
-                  src={cert.image} 
-                  alt={cert.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
-                
-                {/* Icon Overlay */}
-                <div className="absolute top-4 right-4 p-2 bg-background/50 backdrop-blur-md rounded-lg border border-white/10">
-                  <Award className="w-5 h-5 text-primary" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex-1 flex flex-col relative">
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {cert.title}
-                </h3>
-                
-                {/* Meta details */}
-                <div className="flex flex-col gap-2 mb-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Building className="w-4 h-4 shrink-0 opacity-70" />
-                    <span className="font-medium text-foreground/80">{cert.issuer}</span>
+              <Tilt 
+                glareEnable={true} 
+                glareMaxOpacity={0.15} 
+                glareColor="white" 
+                glarePosition="all" 
+                tiltMaxAngleX={5} 
+                tiltMaxAngleY={5} 
+                scale={1.02} 
+                transitionSpeed={2500} 
+                className="h-full"
+              >
+                <div className="group glass-card rounded-2xl overflow-hidden flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500 h-full">
+                  {/* Image Header with Hover Action */}
+                  <div className="relative h-48 overflow-hidden bg-white/5">
+                    <img 
+                      src={cert.image} 
+                      alt={cert.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
+                    
+                    {/* Icon Overlay */}
+                    <div className="absolute top-4 right-4 p-2 bg-background/50 backdrop-blur-md rounded-lg border border-white/10">
+                      <Award className="w-5 h-5 text-primary" />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 shrink-0 opacity-70" />
-                    <span>{cert.date}</span>
-                  </div>
-                </div>
 
-                <p className="text-sm leading-relaxed mb-6 text-muted-foreground line-clamp-3">
-                  {cert.description}
-                </p>
-
-                {/* Actions */}
-                <div className="mt-auto flex items-center justify-between pt-4 border-t border-glass-border">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <button className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
-                        <PlayCircle className="w-4 h-4" />
-                        Preview
-                      </button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-4xl border-white/20 bg-background/95 backdrop-blur-xl p-6">
-                      <div className="rounded-xl overflow-hidden mt-4">
-                        <img 
-                          src={cert.image} 
-                          alt={`${cert.title} Full View`} 
-                          className="w-full h-auto object-cover max-h-[80vh]"
-                        />
+                  {/* Content */}
+                  <div className="p-6 flex-1 flex flex-col relative bg-glass/50 backdrop-blur-sm">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      {cert.title}
+                    </h3>
+                    
+                    {/* Meta details */}
+                    <div className="flex flex-col gap-2 mb-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <Building className="w-4 h-4 shrink-0 opacity-70" />
+                        <span className="font-medium text-foreground/80">{cert.issuer}</span>
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 shrink-0 opacity-70" />
+                        <span>{cert.date}</span>
+                      </div>
+                    </div>
 
-                  <a 
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Verify
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                    <p className="text-sm leading-relaxed mb-6 text-muted-foreground line-clamp-3">
+                      {cert.description}
+                    </p>
+
+                    {/* Actions */}
+                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-glass-border">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <button className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                            <PlayCircle className="w-4 h-4" />
+                            Preview
+                          </button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-4xl border-white/20 bg-background/95 backdrop-blur-xl p-6">
+                          <div className="rounded-xl overflow-hidden mt-4">
+                            <img 
+                              src={cert.image} 
+                              alt={`${cert.title} Full View`} 
+                              className="w-full h-auto object-cover max-h-[80vh]"
+                            />
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+
+                      <a 
+                        href={cert.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        Verify
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Tilt>
             </motion.div>
           ))}
         </motion.div>

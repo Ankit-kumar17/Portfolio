@@ -1,5 +1,6 @@
 import { ExternalLink, Github, ShoppingCart, CheckSquare, User, ArrowRight, Lightbulb, Target, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import {
   Dialog,
   DialogContent,
@@ -113,49 +114,61 @@ const Projects = () => {
               <Dialog>
               <DialogTrigger asChild>
                 <div className="group relative cursor-pointer h-full">
-                  <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500">
-                    {/* Project Header */}
-                    <div className={`h-48 bg-gradient-to-br ${project.gradient} p-6 flex items-center justify-center relative overflow-hidden`}>
-                      {/* Pattern Overlay */}
-                      <div className="absolute inset-0 opacity-20">
-                        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:20px_20px]" />
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                        <project.icon className="w-10 h-10 text-white" />
-                      </div>
+                  <Tilt 
+                    glareEnable={true} 
+                    glareMaxOpacity={0.15} 
+                    glareColor="white" 
+                    glarePosition="all" 
+                    tiltMaxAngleX={5} 
+                    tiltMaxAngleY={5} 
+                    scale={1.02} 
+                    transitionSpeed={2500} 
+                    className="h-full"
+                  >
+                    <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/50 hover:shadow-[0_0_30px_hsl(177_70%_50%/0.15)] transition-all duration-500">
+                      {/* Project Header */}
+                      <div className={`h-48 bg-gradient-to-br ${project.gradient} p-6 flex items-center justify-center relative overflow-hidden`}>
+                        {/* Pattern Overlay */}
+                        <div className="absolute inset-0 opacity-20">
+                          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:20px_20px]" />
+                        </div>
+                        
+                        {/* Icon */}
+                        <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                          <project.icon className="w-10 h-10 text-white" />
+                        </div>
 
-                      {/* Read More Overlay */}
-                      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="font-semibold text-lg flex items-center gap-2">
-                          Read Case Study <ArrowRight className="w-5 h-5" />
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Project Content */}
-                    <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground border border-white/5"
-                          >
-                            {tech}
+                        {/* Read More Overlay */}
+                        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="font-semibold text-lg flex items-center gap-2">
+                            Read Case Study <ArrowRight className="w-5 h-5" />
                           </span>
-                        ))}
+                        </div>
+                      </div>
+
+                      {/* Project Content */}
+                      <div className="p-6 flex-1 flex flex-col bg-glass/50 backdrop-blur-sm">
+                        <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
+                          {project.description}
+                        </p>
+
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground border border-white/5"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Tilt>
                 </div>
               </DialogTrigger>
 
